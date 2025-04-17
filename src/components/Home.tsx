@@ -62,7 +62,7 @@ const Home = () => {
     <Container>
       <HeroSection>
         <ProfileImage 
-          src="/profile.jpg"
+          src="/raviraj06.jpg"
           alt="Raviraj" 
         />
         <TagLine>

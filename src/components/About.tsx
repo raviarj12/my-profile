@@ -1,102 +1,101 @@
 import React from 'react';
-import { Box, Container, Typography, Paper } from '@mui/material';
+import { Box, Typography, Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import PersonIcon from '@mui/icons-material/Person';
+import SchoolIcon from '@mui/icons-material/School';
+import WorkIcon from '@mui/icons-material/Work';
+import InterestsIcon from '@mui/icons-material/Interests';
 
-const PageTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "'Dancing Script', cursive",
-  fontSize: '3rem',
-  marginBottom: theme.spacing(6),
-  color: theme.palette.primary.main,
-  textAlign: 'center',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  gap: theme.spacing(2),
-}));
-
-const AboutContent = styled(Paper)(({ theme }) => ({
+const AboutContainer = styled(Box)(({ theme }) => ({
   padding: theme.spacing(4),
-  backgroundColor: theme.palette.mode === 'dark' ? '#242424' : '#ffffff',
-  borderRadius: theme.spacing(2),
-  position: 'relative',
-  overflow: 'hidden',
+  minHeight: '100vh',
+  background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%)',
 }));
 
-const AboutText = styled(Typography)(({ theme }) => ({
-  lineHeight: 1.8,
-  textAlign: 'justify',
-  marginBottom: theme.spacing(4),
-  color: theme.palette.mode === 'dark' ? '#e0e0e0' : '#333333',
+const AboutGrid = styled(Box)(({ theme }) => ({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+  gap: theme.spacing(4),
+  width: '100%',
 }));
 
-const HourglassIcon = styled(HourglassEmptyIcon)(({ theme }) => ({
-  position: 'absolute',
-  bottom: theme.spacing(4),
-  right: theme.spacing(4),
-  fontSize: '3rem',
-  color: '#FFD700',
-  animation: 'rotate 2s infinite linear',
-  '@keyframes rotate': {
-    '0%': {
-      transform: 'rotate(0deg)',
-    },
-    '100%': {
-      transform: 'rotate(360deg)',
-    },
+const AboutCard = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(3),
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  background: 'rgba(0, 0, 0, 0.3)',
+  backdropFilter: 'blur(10px)',
+  borderRadius: '15px',
+  border: '1px solid rgba(255, 255, 255, 0.1)',
+  boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+  transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+  '&:hover': {
+    transform: 'translateY(-5px)',
+    boxShadow: '0 12px 40px 0 rgba(0, 0, 0, 0.5)',
   },
 }));
 
+const AboutIcon = styled(Box)(({ theme }) => ({
+  fontSize: '3rem',
+  color: '#2196F3',
+  marginBottom: theme.spacing(2),
+  '& > svg': {
+    fontSize: 'inherit',
+  },
+}));
+
+const aboutSections = [
+  {
+    title: 'About Me',
+    content: 'I am a passionate developer with a strong focus on creating innovative solutions. My journey in technology has been driven by curiosity and a desire to build meaningful applications.',
+    icon: <PersonIcon sx={{ fontSize: 'inherit' }} />,
+  },
+  {
+    title: 'Education',
+    content: 'Bachelor of Technology in Computer Science\nUniversity of Technology\nGraduated with honors in 2020',
+    icon: <SchoolIcon sx={{ fontSize: 'inherit' }} />,
+  },
+  {
+    title: 'Experience',
+    content: 'Senior Developer at Tech Solutions (2021-Present)\nFull Stack Developer at WebWorks (2019-2021)\nJunior Developer at CodeCraft (2018-2019)',
+    icon: <WorkIcon sx={{ fontSize: 'inherit' }} />,
+  },
+  {
+    title: 'Interests',
+    content: 'Web Development\nMachine Learning\nOpen Source Projects\nTechnical Writing\nUI/UX Design',
+    icon: <InterestsIcon sx={{ fontSize: 'inherit' }} />,
+  },
+];
+
 const About = () => {
   return (
-    <Container sx={{ py: 8 }}>
-      <PageTitle>
+    <AboutContainer>
+      <Typography variant="h3" component="h1" gutterBottom sx={{ color: '#fff', textAlign: 'center', mb: 6 }}>
         About Me
-        <PersonIcon sx={{ fontSize: '3rem', color: '#FFD700' }} />
-      </PageTitle>
-
-      <AboutContent elevation={3}>
-        <AboutText variant="body1">
-          Are you prepared for a thrilling exploration of the world of web development? My name is Raviraj, 
-          and as a passionate web developer, I am dedicated to utilizing the latest web technologies and 
-          best practices to create practical and impactful web applications that effectively address 
-          real-world challenges.
-        </AboutText>
-
-        <AboutText variant="body1">
-          Keeping pace with the rapid advancements in technology may seem overwhelming, but I am committed 
-          to continuous learning and staying up-to-date to overcome any obstacles that may arise. I take 
-          great satisfaction in my ability to adapt and my strong enthusiasm for staying informed about 
-          the latest technologies and best practices in the field.
-        </AboutText>
-
-        <AboutText variant="body1">
-          What distinguishes me from others is my capacity to enter flow state in which I am fully 
-          engrossed, entirely focused, and completely in tune with the task at hand. This state allows 
-          me to tap into my greatest creativity and productivity, ultimately leading to exceptional results.
-        </AboutText>
-
-        <AboutText variant="body1">
-          I am not only an individual contributor but also a dedicated team player who firmly believes 
-          in the power of perseverance and collaboration, knowing that together, we can accomplish anything. 
-          I work diligently to not only meet the current objectives but also exceed expectations and 
-          deliver exceptional outcomes.
-        </AboutText>
-
-        <AboutText variant="body1">
-          I value the collective potential of a team to achieve remarkable feats and I understand the 
-          significance of time as a valuable resource. I am determined to maximize every moment spent 
-          on my work to produce the most practical and outstanding results imaginable.
-        </AboutText>
-
-        <AboutText variant="body1" sx={{ mb: 0 }}>
-          So, let's embark on this remarkable journey together, where the only limit we have is Time.
-        </AboutText>
-
-        <HourglassIcon />
-      </AboutContent>
-    </Container>
+      </Typography>
+      <AboutGrid>
+        {aboutSections.map((section, index) => (
+          <AboutCard key={index}>
+            <AboutIcon>{section.icon}</AboutIcon>
+            <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2, color: '#fff' }}>
+              {section.title}
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                color: 'rgba(255, 255, 255, 0.7)',
+                whiteSpace: 'pre-line',
+                textAlign: 'center',
+              }}
+            >
+              {section.content}
+            </Typography>
+          </AboutCard>
+        ))}
+      </AboutGrid>
+    </AboutContainer>
   );
 };
 

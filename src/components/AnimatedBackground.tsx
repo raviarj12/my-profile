@@ -38,7 +38,13 @@ const colors = [
   '#a29bfe', // Purple
 ];
 
-const shapes = [
+interface Shape {
+  type: 'text' | 'circle';
+  content?: string;
+  size?: string;
+}
+
+const shapes: Shape[] = [
   { type: 'text', content: '<div>', size: '3rem' },
   { type: 'text', content: '</div>', size: '3rem' },
   { type: 'text', content: '{', size: '4rem' },
@@ -69,16 +75,16 @@ const AnimatedBackground = () => {
       const color = colors[Math.floor(Math.random() * colors.length)];
       
       if (shape.type === 'circle') {
-        element.style.width = shape.size;
-        element.style.height = shape.size;
+        element.style.width = shape.size || '80px';
+        element.style.height = shape.size || '80px';
         element.style.borderRadius = '50%';
         element.style.backgroundColor = color;
         element.style.opacity = '0.15';
         element.style.boxShadow = `0 0 20px ${color}, 0 0 40px ${color}`;
       } else {
-        element.textContent = shape.content;
+        element.textContent = shape.content || '';
         element.style.color = color;
-        element.style.fontSize = shape.size;
+        element.style.fontSize = shape.size || '3rem';
         element.style.textShadow = `0 0 10px ${color}, 0 0 20px ${color}`;
       }
 

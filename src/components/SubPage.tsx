@@ -78,7 +78,7 @@ const SubPage = () => {
           transition={{ duration: 0.8 }}
         >
           <ContentPaper elevation={0}>
-            <Title variant="h3" component="h1">
+            <Title>
               About Me
             </Title>
             <ContentText variant="body1">
@@ -100,7 +100,7 @@ const SubPage = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <ContentPaper elevation={0}>
-            <Title variant="h3" component="h2">
+            <Title>
               Skills
             </Title>
             <ContentText variant="body1">
@@ -121,7 +121,7 @@ const SubPage = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <ContentPaper elevation={0}>
-            <Title variant="h3" component="h2">
+            <Title>
               Experience
             </Title>
             <ContentText variant="body1">
